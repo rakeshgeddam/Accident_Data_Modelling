@@ -1,9 +1,14 @@
 **Project Overview: Car Accident Insurance Claims Data Modeling**
-Objective: Design a data model to process and analyze car accident insurance claims, supporting business questions like:
+================================================================================================
+
+
+
+     Objective: Design a data model to process and analyze car accident insurance claims, supporting business questions like:
 
 What’s the average claim payout by accident severity?
-     a) How long does it take to process high-value claims?
-     b) Which regions have the highest claim rejection rates?
+
+          a) How long does it take to process high-value claims?
+          b) Which regions have the highest claim rejection rates?
 
     Scope: Simulate a dataset of claims, accidents, vehicles, and claimants; transform it into a star schema (fact and dimension tables); and analyze it for insights.
 
@@ -44,18 +49,25 @@ claim_date (date)
 claim_amount (decimal)
 status (varchar)
 processing_days (int)
-  Dimension Tables:
-    dim_accidents:
-        accident_id (PK)
-        accident_date (date)
-        location (varchar)
-        severity (varchar)
-    dim_vehicles:
+
+Dimension Tables:
+===============================================
+dim_accidents:
+
+          accident_id (PK)
+          accident_date (date)
+          location (varchar)
+          severity (varchar)
+
+dim_vehicles:
+
         vehicle_id (PK)
         make (varchar)
         model (varchar)
         year (int)
-    dim_claimants:
+
+dim_claimants:
+
         claimant_id (PK)
         name (varchar)
         age (int)
