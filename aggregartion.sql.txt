@@ -1,0 +1,18 @@
+-- Average claim amount by severity
+SELECT d.severity, AVG(f.claim_amount) as avg_payout
+FROM fact_claims f
+JOIN dim_accidents d ON f.accident_id = d.accident_id
+GROUP BY d.severity;
+
+-- Processing time by status
+SELECT status, AVG(processing_days) as avg_days
+FROM fact_claims
+GROUP BY status;
+
+-- Rejection rate by location
+SELECT d.location, 
+       SUM(CASE WHEN f.status = 'Rejected' THEN 1 ELSE 0 END) / COUNT(*) as rejection_rate
+FROM fact_claims f
+JOIN dim_accidents d ON f.accident_id = d.accident_id
+GROUP BY d.location
+ORDER BY rejection_rate DESC;
